@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> file fields</title>
+</head>
+
+<body>
+	<!-- <form action="file-field.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="file">
+		<input type="submit" value="submit">
+	</form> -->
+
+	<!--
+
+		
+
+	-->
+
+	<select>
+
+	</select>
+
+	<input type="file">
+	<input type="button" pseudo="file-selector-button" value="Choose File">
+	<script>
+		let input = document.querySelector("input");
+		input.addEventListener("change", () => {
+			if (input.files.length > 0) {
+				let file = input.files[0];
+				console.log("You chose", file.name);
+				if (file.type) {
+					console.log("It has type", file.type);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

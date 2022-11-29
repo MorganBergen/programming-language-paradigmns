@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        html forms
+    </title>
+    <!-- add css here-->
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 100px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1em;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0.5em;
+        }
+
+        input {
+            margin: 0.5em;
+        }
+
+        button {
+            margin: 0.5em;
+        }
+    </style>
+</head>
+
+<body><select multiple>
+        <option value="1">0001</option>
+        <option value="2">0010</option>
+        <option value="4">0100</option>
+        <option value="8">1000</option>
+    </select>=<span id="output">0 </span>
+    <script> // the select element is a list of options
+        let select = document.querySelector("select");
+
+        // the output element is a span id of the <select multiple> elements
+        let output = document.querySelector("#output");
+
+        // takes in a change parameter and will iterate through the 
+        select.addEventListener("change", () => {
+            let num = 0;
+
+            // iterate through the options select.option will return an array
+            for (let option of Array.from(select.options)) {
+                if (option.selected) {
+                    // num will be the sum of the selected options
+                    num += Number(option.value);
+                }
+            }
+
+            // output the sum of the selected options
+            output.textContent = num;
+        });
+    </script>
+
+</body>
+
+</html>

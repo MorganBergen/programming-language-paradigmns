@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<canvas></canvas>
+<script>
+
+    let x = document.querySelector("canvas").getContext("2d");
+    x.beginPath();
+    x.moveTo(10, 90);
+    x.bezierCurveTo(10, 10, 90, 10, 50, 90);
+    x.lineTo(90, 10);
+    x.lineTo(10, 10);
+    x.closePath();
+    x.stroke();
+    x.fill();
+</script>
+
+</html>

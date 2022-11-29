@@ -1,0 +1,55 @@
+<!--
+    purpose of this canvas.html is to write a canvas script that draws this quadrature curve with a control point of (60, 10)
+
+    https://www.w3schools.com/tags/canvas_beziercurveto.asp
+
+    quadratic curves are paths that may also contain curved lives
+    the quadraticCurveTo() method draws a quadratic curve to a destination point.  
+    
+    To determine the curvature of the line, the method is given a
+    - Control Point - control points are the points that determine the curvature of the line
+    - Destination Point (x2, y2) - will be a straight line if the control point is the same as the destination point
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas>
+
+        <!--    
+            
+        -->
+        <script>
+
+            let cx = document.querySelector("canvas").getContext("2d");
+            cx.beginPath();
+            cx.moveTo(10, 90);
+            cx.quadraticCurveTo(60, 10, 90, 90);
+            cx.lineTo(60, 10);
+            cx.closePath();
+            cx.stroke();
+
+        </script>
+    </canvas>
+</body>
+
+</html>
+
+
+<!--
+    images
+
+    in computer graphics, a distinction is often made between vector graphics and bitmap graphics
+
+    vector graphics is what we have been doing so far
+    specifying a picture by giving a logical description of shapes
+
+    bitmap graphics is a picture that is specified by a grid of pixels
+-->

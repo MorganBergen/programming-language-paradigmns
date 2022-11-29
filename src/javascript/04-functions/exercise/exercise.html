@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>exercise.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="overview">Overview</h1>
+<p>Morgan Bergen</p>
+<p>EECS 368 Programming Language Paradigms</p>
+<p>August 31st 2022</p>
+<h2 id="in-class-problem">In-Class Problem</h2>
+<p>For this program, what is the console output for?</p>
+<ol>
+<li>
+<p><code>console.log(countEs(&quot;EECS&quot;));</code></p>
+<p><code>=&gt; 2</code></p>
+</li>
+</ol>
+<p>The purpose of <code>countEs</code> this is to encapsulate the countChar method, so that invokcation will be done implicitly by countEs.  The functionality of this program is to return an integer value of how many times <code>E</code> exists in the string argument.  <code>countEs(string)</code> is analogous to a parent function that allows for a more general use case application.</p>
+<ol start="2">
+<li>
+<p><code>console.log(countChar(&quot;david&quot;, &quot;d&quot;));</code></p>
+<p><code> =&gt; 2</code></p>
+</li>
+</ol>
+<p>The purpose of <code>countChar</code> is to iterate through a string and terminate iteration once the iteration has summed to the tring's length.  If there are zero occurances of the target <code>ch</code> in the <code>string</code> then the value returned will be the originally initialized value of <code>0</code>.</p>
+<ol start="3">
+<li>Add a comment to each line of code to tell what it is doing.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countChar</span>(<span class="hljs-params">string, ch</span>) </span>{
+    <span class="hljs-keyword">let</span> counted = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; string.length; i++) {
+        <span class="hljs-keyword">if</span> (string[i] == ch) {
+            counted += <span class="hljs-number">1</span>;
+        } 
+    }
+    <span class="hljs-keyword">return</span> (counted);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countEs</span>(<span class="hljs-params">string</span>) </span>{
+    <span class="hljs-keyword">return</span> countChar(string, <span class="hljs-string">"E"</span>);
+}
+</div></code></pre>
+<h2 id="doxygen-comments"><code>Doxygen</code> Comments</h2>
+<p><a href="https://doxygen.nl/manual/index.html">Doxygen Documentation</a></p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@file    </span>exercise.js
+ * <span class="hljs-doctag">@author  </span>Morgan Bergen
+ * <span class="hljs-doctag">@brief   </span>This file contains the code for the in-class problem
+ * <span class="hljs-doctag">@date    </span>Wed Aug 31 13:40:17 CDT 2022
+ */</span>
+
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@pre     </span>string must be an iterable object type of str and ch must be an element of that object.
+ * <span class="hljs-doctag">@post    </span>counted will be returned as an integer value of the number of times ch appears in string.
+ * <span class="hljs-doctag">@param   </span>string will be searched and iterated upon.
+ * <span class="hljs-doctag">@param   </span>ch will be the target element upon searching the string.
+ * <span class="hljs-doctag">@return  </span>counted will be returned as an integer value of the number of times ch appears in string, if there is no element of ch in string, then 0 will be returned.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countChar</span>(<span class="hljs-params">string, ch</span>) </span>{
+    <span class="hljs-keyword">let</span> counted = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; string.length; i++) {
+        <span class="hljs-keyword">if</span> (string[i] == ch) {
+            counted += <span class="hljs-number">1</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> (counted);
+}
+
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@pre     </span>string must be an iterable object type of str.
+ * <span class="hljs-doctag">@post    </span>upon invocation the return value will be the return value of countChar(string, "E") 
+ * <span class="hljs-doctag">@param   </span>string will be searched and iterated upon.
+ * <span class="hljs-doctag">@return  </span>countChar will be returned as an integer value of the number of times "E" appears in string, if there is no element of "E" in string, then 0 will be returned.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countEs</span>(<span class="hljs-params">string</span>) </span>{
+    <span class="hljs-keyword">return</span> (countChar(string, <span class="hljs-string">"E"</span>));
+}
+</div></code></pre>
+<h3 id="cheat-sheet">Cheat Sheet</h3>
+<p><code>@file</code>: Filename</p>
+<p><code>@author</code>: Name of the author</p>
+<p><code>@brief</code>: A brief description of the file contents and purpose</p>
+<p><code>@date</code>: date started coding</p>
+<p><code>@pre</code>: States the condition that must be true for a member method to work as expected (e.g invalid values, invalid range, invalid conditions)</p>
+<p><code>@post</code>: Describe the side effects of the function. It describes whether the function modifies the input parameter or the calling objects or any other functionality of the program</p>
+<p><code>@param</code>: Parameters that are passed to the function</p>
+<p><code>@return</code>: Specify what does the function returns after execution</p>
+<p><code>@throw</code>: Specify the error a function might throw</p>
+<h2 id="regular-in-line-comments">Regular In-line Comments</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// this function will take a string and a character as an argument and return the number of times that character appears in the string</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countChar</span>(<span class="hljs-params">string, ch</span>) </span>{
+    <span class="hljs-comment">// initializing counted to 0 so incase the character is not found in the string, 0 will be returned</span>
+    <span class="hljs-keyword">let</span> counted = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// iterating through the string till the end of the string</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; string.length; i++) {
+        <span class="hljs-comment">// if the character at the current index is equal to the character we are looking for, then increment counted</span>
+        <span class="hljs-keyword">if</span> (string[i] == ch) {
+
+            <span class="hljs-comment">// counted will be incremented by 1</span>
+            <span class="hljs-comment">// alternative syntax is counted++;</span>
+            counted += <span class="hljs-number">1</span>;
+        }
+    }
+
+    <span class="hljs-comment">// return the number of times the character was found in the string represented by the integer counted.</span>
+    <span class="hljs-keyword">return</span> (counted);
+}
+
+<span class="hljs-comment">// the return value of this function will be the return value of countChar(string, "E")</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">countEs</span>(<span class="hljs-params">string</span>) </span>{
+
+    <span class="hljs-comment">// this return value will be of type integer.</span>
+    <span class="hljs-keyword">return</span> (countChar(string, <span class="hljs-string">"E"</span>));
+
+}
+
+<span class="hljs-comment">// output to the console the amount of times E appears in EECS</span>
+<span class="hljs-built_in">console</span>.log(countEs(<span class="hljs-string">"EESC"</span>));
+<span class="hljs-comment">// =&gt; 2</span>
+
+<span class="hljs-comment">// output to the terminal the amount of times d appears in david</span>
+<span class="hljs-built_in">console</span>.log(countChar(<span class="hljs-string">"david"</span>, <span class="hljs-string">"d"</span>));
+<span class="hljs-comment">// =&gt; 2</span>
+
+</div></code></pre>
+
+</body>
+</html>

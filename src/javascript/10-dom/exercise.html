@@ -1,0 +1,49 @@
+<h1>Heading with a <span>span</span> element.</h1>
+<p>A paragraph with <span>one</span>, <span>two</span>spans.</p>
+
+
+<script>
+
+    function byTagName(node, tagName) {
+        let found = [];
+        tagName = tagName.toUpperCase();
+
+        function explore(node) {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                let child = node.childNodes[i]; if
+                    (child.nodeType == document.ELEMENT_NODE) { if (child.nodeName == tagName) found.push(child); explore(child); }
+            }
+        }
+        explore(node); return found;
+    }
+
+    /* 1. Describe what the function byTagName does: The function byTagName takes a node
+        and a tag name as arguments and returns an array of all descendant elements with the given tag name. It does this by
+        calling the explore function, which recursively calls itself on each child node of the node passed to byTagName. If
+        the child node is an element node and has the same tag name as the one passed to byTagName, it is added to the array
+        of found elements. 
+        
+        2. Describe what the function explore does: The function explore takes a node as an argument and
+        pushes all the elements with the given tag name to the found array. It does this by looping through the child nodes
+        of the node passed to explore. If the child node is an element node and has the same tag name as the one passed to
+        byTagName, it is added to the array of found elements. If the child node is an element node, explore is called on
+        it. 
+        
+    */
+
+    // 3. What is the output of the following code? Why?
+
+    console.log(byTagName(document.body, "h1").length);
+    console.log(byTagName(document.body, "span").length);
+    let para = document.querySelector("p");
+    console.log(byTagName(para, "span").length);
+
+
+    /*
+
+    The output of this code will be Heading with a span element.  A paragraph with one, two spans.
+
+    */
+
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<pre>
+# JavaScript Bugs and Errors
+
+### table of contents
+
+1.  [bugs & debugging]()
+2.  [javascript makes debugging hard]()
+3.  [errors that javascript does complain about]()
+4.  [strict mode]()
+5.  [types]()
+6.  [testing]()
+7.  [debugging with `console.log`]()
+8.  [debugging with browser debugger]()
+9.  [exception handling]()
+10. [assertions]()
+11. [summary]()
+12. [in-class problem]()
+
+## bugs & debugging 
+
+1 of 12
+
+ > Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it."
+ >
+ > – Brian Kernighan and P.J. Plauger, The Elements of Programming Style
+
+ Flaws in computer programs are usually called bugs and the process of finding mistakes - bugs - in programs is called debugging.  
+ 
+
+ ## javascript makes debugging hard
+
+ JavaScript's looseness makes debugging hard.  Its concept of bindings and properties is vague enough that it will rarely catch typos before actually running the program.  And even then, it allows you to do some clearly nonsensical things without complaint, such as computing: `true * "monkey"`.  Often, your nonsense computation will merely produce NaN (not a number) or an undefined value, which the program happily continues, convinced that it's doing something meaningful.  The mistake will manifest itself only later, after the bogus value has traveled through several functions.  It might not trigger an error at all but silently cause the program's output to be wrong.  Finding the source of such problems can be difficult.  Fortunately, JavaScript does have some tools to help.
+ ## errors that javascript does complain about
+
+ 1.  Syntax errors
+- writing a program that does not follow javascript's syntax will immediately make the computer complain.
+
+ 2.  Other things that will cause an error to be reported when the program tries to perform the action include:
+- calling something that's not a function
+- looking up a property on an undefined value
+
+## strict mode
+
+JavaScript can be made a little stricter by enabling <span style="color:orange;">`strict mode`</span>.  This is done by putting the string `"use strict"` at the top of the file or a function body.
+
+```JavaScript
+function canYouSpotTheProblem () {
+    "use strict";
+    for (counter = 0; counter < 10; counter++) {
+        console.log("Happy happy");
+    }
+}
+canYouSpotTheProblem();
+// -> ReferenceError:  counter is not defined
+```
+
+Normally, you forget to put let in front of your binding, as with counter.
+Putting a few strategic `console.log` calls into the program is a good way to get additional information about what the program is doing.  Printing the content of variables is an effective way to debug in any language.  The following example program tries to convert a whole number to a string in a given base
+
+
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+```
+
+</pre>
+</body>
+</html>
+

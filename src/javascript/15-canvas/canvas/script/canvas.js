@@ -1,0 +1,1 @@
+/*<script src="scripts/canvas.js"></script>*/

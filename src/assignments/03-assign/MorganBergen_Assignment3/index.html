@@ -1,0 +1,93 @@
+<!--
+
+    @author:  Morgan Bergen
+    @date:    Mon Oct  3 14:09:56 CDT 2022
+    @file:    index.html
+    @brief:   
+
+    - tabbed panels are widely used in interfaces
+    - they allow you to select an interface panel by choosing from a number of tabs "sticking out" above an element.
+
+    in this file we will implement a simple tabbed interface using javascript and html
+    write a function asTabs that takes a DOM node as an argument and creates a tabbed interface showing the child elements of that node.
+    it should insert a list of <button> elements at the top of the node, one for each child element, containing text retrieved from the data-tabname attribute of the child.
+    when one of these buttons is clicked, the element it corresponds to is shown and the others are hidden.
+
+-->
+
+<!DOCTYPE html>
+<div id="wrapper">
+    <div data-tabname="Rock">Rock</div>
+    <div data-tabname="Chalk">Chalk</div>
+    <div data-tabname="Jayhawk">Jayhawk</div>
+</div>
+<script>
+    function asTabs(node) {
+        var childElements = document.querySelectorAll('[data-tabname]');
+        var tabs = [];
+        for (let i = 0; i < childElements.length; i++) {
+            tabs.push(childElements[i]);
+        }
+        var buttonList = document.createElement('div');
+        tabs.forEach(function (tab, index) {
+            var button = document.createElement('button');
+            var buttonText = document.createTextNode(tab.dataset.tabname);
+            button.appendChild(buttonText);
+            buttonList.appendChild(button);
+            button.addEventListener('click', function () {
+                selectTab(index);
+            });
+        });
+        node.insertBefore(buttonList, node.firstChild);
+        function selectTab(index) {
+            tabs.forEach(function (tab, i) {
+                if (index == i) {
+                    tab.style.display = '';
+                } else {
+                    tab.style.display = 'none';
+                }
+            });
+        }
+        selectTab(0); // to initially show first tab
+    }
+    asTabs(document.querySelector("#wrapper"));
+</script>
+
+<!DOCTYPE html>
+
+<div id="wrapper">
+    <div data-tabname="one">tab one</div>
+    <div data-tabname="two">tab two</div>
+    <div data-tabname="three">tab three</div>
+</div>
+<script>
+    function asTabs(node) {
+        var tabs = [];
+        for (var i = 0; i < node.childNodes.length; i++) {
+            var child = node.childNodes[i];
+            if (child.nodeType == document.ELEMENT_NODE)
+                tabs.push(child);
+        }
+
+        var tabList = document.createElement("div");
+        tabs.forEach(function (tab, i) {
+            var button = document.createElement("button");
+            button.textContent = tab.getAttribute("data-tabname");
+            button.addEventListener("click", function () { selectTab(i); });
+            tabList.appendChild(button);
+        });
+        node.insertBefore(tabList, node.firstChild);
+
+        function selectTab(n) {
+            tabs.forEach(function (tab, i) {
+                if (i === n)
+                    tab.style.display = "";
+                else
+                    tab.style.display = "none";
+            });
+
+        }
+        selectTab(0);
+    }
+    asTabs(document.querySelector("#wrapper"));
+</script>

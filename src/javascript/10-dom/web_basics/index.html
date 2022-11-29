@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+
+<head>
+    <title>clock</title>
+    <style>
+        #clock {
+            font: bold 24px sans-serif;
+            background: #ddf;
+            padding: 15px;
+            border: solid grey 2px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>digital clock</h1>
+    <!-- will insert the time into this element -->
+    <span id="clock"></span>
+    <script>
+        // this is now javascipt
+        function displayTime() {
+            let clock = document.querySelector('#clock');
+            let now = new Date();
+            clock.textContent = now.toLocaleTimeString();
+        }
+        displayTime();
+        setInterval(displayTime, 1000);
+    </script>
+</body>
+<html>
+
+</html>

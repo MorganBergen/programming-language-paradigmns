@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+
+</head>
+
+<!--
+
+    write a canvas script to draw the following half of an ellipsoid centered at (50, 50) with a radius of 40.
+
+    include required html tags
+
+    comment each line of canvas and HTML code
+
+    hint:  it is half a circle that is drawn three times as wide and half as high.
+
+-->
+
+<body>
+
+    <canvas></canvas>
+
+    <script>
+
+
+        let x = document.querySelector("canvas").getContext("2d");
+        x.beginPath();
+        x.arc(50, 50, 40, 0, math.PI);
+        x.fill();
+
+    </script>
+
+</body>
+
+</html>

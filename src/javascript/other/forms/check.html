@@ -1,0 +1,32 @@
+<!--
+
+a checkbox field is a bianry toggle
+it's value can be extracted or changes through its checked property
+the checked proeprty is a boolean value
+the <label> tag associates a piece of document with an input field
+    clicking anywhere on the label will activate the field
+    which focuses it and toggles its value when it is a checkbox
+
+this file is a simple example of a checkbox field
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>check boxes</title>
+</head>
+
+<body>
+    <label>
+        <input type="checkbox" id="purple"> make this page purple </label>
+    </label>
+    <script>
+        let checkbox = document.querySelector("#purple");
+        checkbox.addEventListener("change", () => {
+            document.body.style.background =
+                checkbox.checked ? "mediumpurple" : "";
+        });
+    </script>
+</body>
+
+</html>

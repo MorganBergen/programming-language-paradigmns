@@ -1,0 +1,122 @@
+<!--
+
+	@author		Morgan Bergen
+	@date		Mon Oct 17 22:04:14 CDT 2022
+	@brief		JavaScript Pie Chart
+	@name		00-pieChart.html
+
+	assignment no. 4
+
+	- in chapter 17, we saw an example program that drew a pie chart
+	- modify this program so that the name of each category is shown next to the slice that represents it
+	- try to find a pleasing-looking way to automatically position this text that works for other data sets
+	- you may assume that categories are big enough to leave ample room for their labels
+	- you might need Math.sin and Math.cos again, whcih are described in Chapter 14
+	- draw the chart twice
+	- you may choose your own colors for each pie slice
+	- include all your code in a single HTML file named PieChart.htm
+	- provide comments for the javascript code that explain what each line of code is doing
+
+	once with this customer satisfaction data (data set 1):
+		
+	927 of the customers answered “Satisfied”
+	463 of the customers answered “Neutral”
+	213 of the customers answered “Unsatisfied”
+	510 of the customers answered “No comment”
+	
+	once with this customer satisfaction data (data set 2):
+
+	104 of the customers answered “Very happy
+	63 of the customers answered “Happy”
+	87 of the customers answered “Neutral”
+	51 of the customers answered “Unhappy”
+	26 of the customers answered “Very unhappy”
+	18 of the customers answered “No comment”
+
+-->
+
+<!DOCTYPE html>
+<html>
+<canvas width="1000" height="1000"></canvas>
+<script>
+
+	// querySelector("canvas") returns the first element in the document that matches the specified selector 
+	let cx = document.querySelector("canvas").getContext("2d");
+	// currentAngle is the angle of the current slice
+	let currentAngle = -0.5 * Math.PI;
+
+	// centerX and centerY are the coordinates of the center of the pie chart
+	let centerX = 300, centerY = 150, radius = 100;
+
+	// cx.font sets the font of the text
+	cx.font = "10px sans-serif";
+	// cx.fillStyle sets the color of the text
+	cx.fillStyle = "black";
+
+	// data set 1 and 2
+	const survey = [[
+		// key value pairs of name, count, and color
+		{ name: "Satisfied", count: 927, color: "green" },
+		{ name: "Neutral", count: 463, color: "red" },
+		{ name: "Unsatisfied", count: 213, color: "blue" },
+		{ name: "No Comment", count: 518, color: "grey" }
+	], [
+		{ name: "Very happy", count: 104, color: "green" },
+		{ name: "Happy", count: 63, color: "yellow" },
+		{ name: "Neutral", count: 87, color: "red" },
+		{ name: "Unhappy", count: 51, color: "blue" },
+		{ name: "Very unhappy", count: 26, color: "purple" },
+		{ name: "No Comment", count: 16, color: "grey" }
+	]]
+
+	// for loop to draw the pie chart twice with two different sets
+	for (let results of survey) {
+		// first set of data
+		for (let result of results) {
+			// total is the sum of all the counts
+			let total = results.reduce((sum, { count }) => sum + count, 0);
+			// sliceAngle is the angle of the current slice
+			let sliceAngle = (result.count / total) * 2 * Math.PI;
+			// textAngle is the angle of the text
+			let textAngle = currentAngle + sliceAngle / 2;
+
+			// this will draw the slice
+			cx.beginPath();
+			// the arc method draws an arc which is centered at (centerX, centerY) with a radius of radius
+			cx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+
+			// we increase the currentAngle by the sliceAngle
+			currentAngle += sliceAngle;
+			// lineTo method draws a line from the current point to the specified point
+			cx.lineTo(centerX, centerY);
+			// fillStyle sets the color of the slice
+			cx.fillStyle = result.color;
+			// fill method fills the current drawing (a slice)
+			cx.fill();
+			// color will be grey for the text
+			cx.fillStyle = 'grey';
+			// baseline is the baseline of the text
+			cx.textBaseline = 'middle';
+			// if the textAngle is greater than 0.5 * Math.PI and less than 1.5 * Math.PI
+			if (Math.cos(textAngle > 0)) {
+				cx.textAlign = 'start';
+				// otherwise the textAngle will be assigned to end
+			} else {
+				cx.textAlign = 'end';
+			}
+			// fillText method will draw the text
+			cx.fillText(
+				// grab the name of the current slice
+				result.name,
+				// the x coordinate of the text
+				centerX + Math.cos(textAngle) * (radius) * 1.6,
+				// the y coordinate of the text
+				centerY + Math.sin(textAngle) * (radius) * 1.6);
+		}
+		// move the center of the pie chart to the right by 400
+		centerX += 400;
+	}
+// end of js
+</script>
+
+</html>

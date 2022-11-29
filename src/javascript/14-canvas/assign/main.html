@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<tab-panel>
+    <div data-tabname="tab1">xxx</div>
+    <div data-tabname="tab2">yyy</div>
+    <div data-tabname="tab3">zzz</div>
+</tab-panel>
+<script>
+    function asTabs(node) {
+        // source code goes here
+    }
+    asTabs(document.querySelector("tab-panel"));
+
+</script>
+
+</html>
+
+
+<!--    
+
+deliverable is as follows
+- tabbed panels are widely used in UI design
+- they allow you to select an interface panel by choosing from a number of tabs "sticking out" above an element
+- in this assignmet you must implement a simple tabbed interface using JavaScript & HTML
+- write a function, asTabs that takes a DOM node and creates a tabbed interface showing the child elemnts of that node
+- it should insert a list of <button> elements at the top of the node, one for each child element, containing text retrieved from the data-tabnamed attribute of the child
+    - all but one of the original children should be hidden
+
+
+
+Document Object Model
+
+JavaScript program may inspect and interfere with the document that the browser is displaying through a data strcuture
+called the Document Object Model (DOM).
+The DOM is a cross-platform and language independent interface that treats an HTML documemt as a tree structure.
+The tree consists of element (i.e. HTML tag), text, and comment nodes.
+
+
+The data structure the brower uese to represent the document follows the following shape.
+- for each box, there is an object, which we can interact with to find out things such as what HTML tag it represents
+and which boxes and text it contains.
+- This representation is called the Document Object Model, or DOM for short
+- The javascript blobal binding, document, gives us access to these objects.
+- Its documentElement property refers to the object representing the <html> tag.
+- Since every HTML document has a head and a body it also has a head and body properties, pointing at those elements
+
+DOM Tree
+
+
+-->
+
+<!--    
+
+
+    
+-->
