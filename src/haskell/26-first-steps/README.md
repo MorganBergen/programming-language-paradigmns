@@ -1,7 +1,25 @@
 # Haskell First Steps
 
+**table of contents**
 
-## Starting GHCi
+1.  [help on haskell](#help-on-haskell)
+2.  [glasgow haskell compiler](#glasgow-haskell-compiler)
+3.  [access to ghc at ku](#access-to-ghc-at-ku)
+4.  [starting ghci](#starting-ghci)
+
+## help on haskell
+
+-  [haskell.org](http://www.haskell.org/)
+-  [haskell wiki](http://www.haskell.org/haskellwiki/)
+-  [haskell wiki: learn](http://www.haskell.org/haskellwiki/Learn)
+-  [haskell wiki: getting started](http://www.haskell.org/haskellwiki/Getting_started)
+-  [learn you a haskell](http://learnyouahaskell.com/)
+
+## glasgow haskell compiler
+
+-  [ghc](http://www.haskell.org/ghc/)
+-  ghc is the leading implementation of haskell, and comprises a compiler and interpreter
+-  the interactive nature of the interpreter makes it well suited for teaching and prototyping
 
 The interpreter can be started from the terminal command prompt $ by simply typing ghci:
 
@@ -87,10 +105,6 @@ select the nth element of a list (note 0 based indexing)
 > [1, 2, 3, 4, 5] !! 2
 3
 ``
-
-
-
-
 
 ## function applications
 
