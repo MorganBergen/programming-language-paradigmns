@@ -10,6 +10,7 @@
 6.  [useful ghci commands](#useful-ghci-commands)
 7.  [standard prelude](#standard-prelude)
 8.  [function application](#function-application)
+9.  [function application examples](#function-application-examples)
 
 
 ## help on haskell
